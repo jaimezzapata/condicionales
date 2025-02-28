@@ -69,6 +69,7 @@ if (usuario === "admin") {
     console.log('Bienvenido ' + usuario);
     let saldoCuenta = 0
     let opcion = 0
+    let numeroCuenta = 0
     let cuentaUno = 123456789
     let cuentaDos = 987654321
     let valorOperacion = 0
@@ -79,8 +80,55 @@ if (usuario === "admin") {
         console.log('Su saldo es: ' + saldoCuenta); /* Concatenación */
         break;
       case 2:
+        valorOperacion = Number(prompt('Ingrese el valor a retirar: '))
+        if (valorOperacion <= saldoCuenta) {
+          // saldoCuenta = saldoCuenta - valorOperacion
+          saldoCuenta -= valorOperacion /* Operador unario */
+          console.log('Su nuevo saldo es: ' + saldoCuenta);
+        } else {
+          console.log('Saldo insuficiente...');
+        }
+        break
+      case 3:
+        valorOperacion = Number(prompt('Ingrese el valor a consignar: '))
+        if (valorOperacion < 0) {
+          console.log('No se puede consigar un valor negativo');
+        } else {
+          saldoCuenta += valorOperacion
+          console.log('Su nuevo saldo es: ' + saldoCuenta);
+        }
+        break;
+      case 4:
+        numeroCuenta = Number(prompt('Ingrese el numero de cuenta: '))
+        switch (numeroCuenta) {
+          case cuentaUno:
+            valorOperacion = Number(prompt('Ingrese el valor a transferir: '))
+            if (valorOperacion <= saldoCuenta) {
+              saldoCuenta -= valorOperacion
+              console.log('Su nuevo saldo es: ' + saldoCuenta);
+            } else {
+              console.log('Saldo insuficiente...');
+            }
+            break
+          case cuentaDos:
+            valorOperacion = Number(prompt('Ingrese el valor a transferir: '))
+            if (valorOperacion <= saldoCuenta) {
+              saldoCuenta -= valorOperacion
+              console.log('Su nuevo saldo es: ' + saldoCuenta);
+            } else {
+              console.log('Saldo insuficiente...');
+            }
+            break
+          default:
+            console.log('Cuenta no existe o no registrada');
+            break
+        }
+        break
+      case 5:
+        console.log('Hasta pronto...');
         break
       default:
+        console.log('Opción no existe');
         break;
     }
   } else {
